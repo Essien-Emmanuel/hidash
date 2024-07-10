@@ -11,8 +11,8 @@ module.exports = {
 
   map(arr, fn) {
     const newArr = [];
-    for (let value of arr) {
-      newArr.push(fn(value));
+    for (let index in arr) {
+      newArr.push(fn(arr[index], index));
     }
     return newArr;
   },
