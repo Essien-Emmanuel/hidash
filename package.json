@@ -4,17 +4,17 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "test": "nodemon tests/index.test.js"
+    "test": "mocha tests/index.test.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "colors": "^1.4.0",
-    "mocha": "^10.6.0"
+    "colors": "^1.4.0"
   },
   "devDependencies": {
+    "mocha": "^10.6.0",
     "nodemon": "^3.1.4"
   }
 }
