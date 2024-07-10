@@ -1,19 +1,30 @@
+const assert = require("assert");
+const colors = require("colors");
+
 const { forEach, map } = require("../src/index");
 
-let sum = 0;
-forEach([1, 2, 3], (value) => {
-  sum += value;
+function test(desc, fn) {
+  console.log(`----${desc}`);
+  try {
+    fn();
+  } catch (error) {
+    console.log(colors.red(error.message));
+  }
+}
+
+test("The forEach function", () => {
+  let sum = 0;
+  forEach([1, 2, 3], (value) => {
+    sum += value;
+  });
+
+  assert.strictEqual(sum, 6, "Expected forEach to sum the array");
 });
 
-const result = map([1, 2, 3], (value) => {
-  return value * value;
+test("The map function", () => {
+  const result = map([1, 2, 3], (value) => {
+    return value * value;
+  });
+
+  assert.deepStrictEqual(result, [1, 4, 9]);
 });
-
-if (sum !== 6) throw new Error("Expected summing array to equal 6");
-
-if (result[0] !== 1)
-  throw new Error(`Expected to have 1, but found ${result[0]}`);
-if (result[1] !== 4)
-  throw new Error(`Expected to have 1, but found ${result[0]}`);
-if (result[2] !== 9)
-  throw new Error(`Expected to have 1, but found ${result[0]}`);
